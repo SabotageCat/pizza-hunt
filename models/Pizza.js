@@ -1,35 +1,35 @@
 const { Schema, model } = require('mongoose');
 
 const PizzaSchema = new Schema(
-{
-    pizzaName: {
+    {
+      pizzaName: {
         type: String
-    },
-    createdBy: {
+      },
+      createdBy: {
         type: String
-    },
-    createdAt: {
+      },
+      createdAt: {
         type: Date,
-        default: Date.now
-    },
-    size: {
+        default: Date.now,
+      },
+      size: {
         type: String,
         default: 'Large'
-    },
-    toppings: [],
-    comments: [
+      },
+      toppings: [],
+      comments: [
         {
-            type: Schema.Types.ObjectId,
-            ref: 'Comment'
+          type: Schema.Types.ObjectId,
+          ref: 'Comment'
         }
-    ]
-},
-{
-    toJSON: {
-        virtuals: true,
+      ]
     },
-    id: false
-}
+    {
+      toJSON: {
+        virtuals: true,
+      },
+      id: false
+    }
 );
 
 PizzaSchema.virtual('commentCount').get(function() {

@@ -19,3 +19,11 @@ request.onsuccess = function(event) {
 request.onerror = function(event) {
     console.log(event.target.errorCode);
 };
+
+function saveRecord(record) {
+    const transaction = db.transaction(['new_pizza'], 'readwrite');
+
+    const pizzaObjectStore = transaction.objectStore('new_pizza');
+
+    pizzaObjectStore.add(record);
+};
